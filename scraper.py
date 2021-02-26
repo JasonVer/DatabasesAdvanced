@@ -5,14 +5,15 @@ import pandas as pd
 import time
 import logging
 
+
 #variables
-timet = []
-ucdt = []
-btct = []
-hasht = []
-ucd_array = []
-hash_array = []
-time_array = []
+times = []
+usd = []
+btcoin = []
+hashes = []
+usd_array = []
+hashes_array = []
+times_array = []
 btc_array = []
 results = []
 
@@ -26,48 +27,50 @@ page_soup = soup(html, "html.parser")
 containers = page_soup.find_all("div",{"class":"sc-1g6z4xm-0 hXyplo"})
 
 
-def calculatrix(timet,ucdt,btct,hasht):
+def calculatrix(times,usd,btcoin,hashes):
     for container in containers:
-        rawHash = container.find_all('a',{'class':'sc-1r996ns-0 fLwyDF sc-1tbyx6t-1 kCGMTY iklhnl-0 eEewhk d53qjk-0 ctEFcK'})
-        hashed = rawHash[0].text
+        rwHash = container.find_all('a',{'class':'sc-1r996ns-0 fLwyDF sc-1tbyx6t-1 kCGMTY iklhnl-0 eEewhk d53qjk-0 ctEFcK'})
+        hashes = rwHash[0].text
 
-        rawTime = container.find_all('span', {'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
-        time = rawTime[0].text
+        rwTime = container.find_all('span', {'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
+        times = rwTime[0].text
 
-        rawBtc = container.find_all('span',{'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
-        btc = rawBtc[1].text
+        rwBtc = container.find_all('span',{'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
+        btc = rwBtc[1].text
 
-        rawUcd = container.find_all('span',{'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
-        ucd = rawUcd[2].text
+        rwUcd = container.find_all('span',{'class':'sc-1ryi78w-0 cILyoi sc-16b9dsl-1 ZwupP u3ufsr-0 eQTRKC'})
+        usd = rwUcd[2].text
         
-        ucd_array.append(ucd)
+        usd_array.append(usd)
         btc_array.append(btc)    
-        hash_array.append(hashed)
-        time_array.append(time)
+        hashes_array.append(hashes)
+        times_array.append(times)
 
-results.append(calculatrix(timet,ucdt,btct,hasht))
+results.append(calculatrix(times,usd,btcoin,hashes))
 
 #get highest price
-maxUcd = max(ucd_array)
-ucdt.append(maxUcd)
-index = ucdt.index(maxUcd)
+maxUcd = max(usd_array)
+usd.append(maxUcd)
+index = usd.index(maxUcd)
 maxBts = max(btc_array)
-btct.append(maxBts)
-maxTime = max(time_array)
-timet.append(maxTime)
-maxHash = max(hash_array)
-hasht.append(maxHash)
+btcoin.append(maxBts)
+maxTime = max(times_array)
+times.append(maxTime)
+maxHash = max(hashes_array)
+hashes.append(maxHash)
 
 #put in dataframe and put in file (print) 
 
-df = pd.DataFrame(data = {'Hash':hasht,'Time':timet,'BTC':btct,'USD':ucdt})
+df = pd.DataFrame(data = {'Hash':hashes,'Time':times,'BTC':btcoin,'USD':usd})
 #df.head(1).to_csv("file.log", header="Hash", index=None, sep='\t', mode='a')
+#df.head(1).to_csv("all.log", header="Hash", index=None, sep='\t', mode='a')
 #print(df)
+
 
 #timer
 while True:
     time.sleep(60)
-    calculatrix(timet,ucdt,btct,hasht)
+    calculatrix(times,usd,btcoin,hashes)
     #file met alle lijnen van refreshen
     df.head(1).to_csv("all.log", header="Hash", index=None, sep='\t', mode='a')
     #grootste van voorbije minuut, 1 lijn
