@@ -1,7 +1,8 @@
 # DatabasesAdvanced
 
 <h1> Web scraping python script </h1>
-
+<h1> part 1</h1>
+<h2>script: scraper.py</h2>
 <h2> Intro </h2>
 The website we used to scrape: https://www.blockchain.com/btc/unconfirmed-transactions <br>
 The script will put the scraped variables in two log files, highest.log and all.log <br>
@@ -24,3 +25,30 @@ If you are on a Ubuntu OS you can use the command git clone to download this rep
 </ul>
 To execute the script use: python3 scraper.py <br>
 To stop running the script, type ctrl + c. in the terminal <br>
+
+<h1>part 2</h1>
+<h2> script: mongoP.py </h2>
+here I will explain how we put data into MongoDB
+<h3>script</h3>
+First we will change our script a little. in order to make it work we need an extension.
+<ul>
+  <li> pip install pandas </li>
+ </ul>
+ 
+ We still use the Ubuntu VM.
+ make sure you updated your git on the VM.
+ <h3>MongoDB</h3>
+ to make everything work in your VM you need to install MongoDB. We will do this with the following commands.
+ <ul>
+ <li>sudo apt install curl</li>
+<li>curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -</li>
+<li>echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list</li>
+<li>sudo apt update</li>
+<li>sudo apt install mongodb-org</li>
+<li>sudo systemctl start mongod.service</li>
+<li>sudo systemctl status mongod</li>
+<li>sudo systemctl enable mongod</li>
+<li>mongo --eval 'db.runCommand({ connectionStatus: 1 })'</li>
+</ul>
+
+If you did that you can now work with MongoP.py.
