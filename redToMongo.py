@@ -5,7 +5,7 @@ import pandas as pd
 import time
 import logging
 import pymongo as mongo
-
+import redis
 
 #Redis
 con = redis.Redis()
