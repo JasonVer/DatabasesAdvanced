@@ -34,7 +34,7 @@ def ToMongo(con, DataInBase):
 
     #Pass on values
     mon = max(usd)
-    ind = toUsd.index(mon)
+    ind = usd.index(mon)
     hashin = hashes[index]
     times = time[index]
     bit = bitcoin[index]
