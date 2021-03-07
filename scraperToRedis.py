@@ -66,10 +66,10 @@ maxUcd = max(usd_array)
 usd.append(maxUcd)
 
 #values into redis
-con.rpush("Hash", str(hashes.text))
-con.rpush("Time", str(times.text))
-con.rpush("Bitcoin", str(btcoin.text))
-con.rpush("US Dollar", str(usd.text))
+con.rpush("Hash", str(hashes))
+con.rpush("Time", str(times))
+con.rpush("Bitcoin", str(btcoin))
+con.rpush("US Dollar", str(usd))
 
 
 #mongoDB
