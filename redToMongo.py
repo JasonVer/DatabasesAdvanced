@@ -35,9 +35,9 @@ def ToMongo(con, DataInBase):
     #Pass on values
     mon = max(usd)
     ind = usd.index(mon)
-    hashin = hashes[index]
-    times = time[index]
-    bit = bitcoin[index]
+    hashin = hashes[ind]
+    times = time[ind]
+    bit = bitcoin[ind]
 
     # total
     tot = {"Hash": hashin, "Time": times, "Amount(BTC)": bit, "Amount(USD)": mon }
