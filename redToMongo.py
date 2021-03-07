@@ -2,7 +2,7 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import pandas as pd
-import time
+import time as timer
 import logging
 import pymongo as mongo
 import redis
@@ -48,4 +48,4 @@ def ToMongo(con, DataInBase):
 # timer
 while True:
     ToMongo(con, DataInBase)
-    time.sleep(60)
+    timer.sleep(60)
