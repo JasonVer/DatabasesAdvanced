@@ -47,5 +47,5 @@ def ToMongo(con, DataInBase):
     
 # timer
 while True:
-    ToMongoDB(con, DataInBase)
+    ToMongo(con, DataInBase)
     time.sleep(60)
