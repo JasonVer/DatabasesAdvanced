@@ -52,3 +52,9 @@ First we will change our script a little. in order to make it work we need an ex
 </ul>
 
 If you did that you can now work with MongoP.py.
+
+<h1> part 3</h1>
+<h2> add Redis to the script</h2>
+to install Redis you can follow redis.sh. if you did that, Redis is ready to go.
+To put Redis into your script you have to install the feature.
+This can you do with: Pip install redis.
