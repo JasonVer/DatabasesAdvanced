@@ -27,10 +27,10 @@ usd = []
 def ToMongo(con, DataInBase):
 
     #Fill in variables
-    hashes = list(map(str, connect.lrange("Hash", 0, -1)))
-    time = list(map(str, connect.lrange("Time", 0, -1)))
-    bitcoin = list(map(float, connect.lrange("Bitcoin", 0, -1)))
-    usd = list(map(float, connect.lrange("US Dollar", 0, -1)))
+    hashes = list(map(str, con.lrange("Hash", 0, -1)))
+    time = list(map(str, con.lrange("Time", 0, -1)))
+    bitcoin = list(map(float, con.lrange("Bitcoin", 0, -1)))
+    usd = list(map(float, con.lrange("US Dollar", 0, -1)))
 
     #Pass on values
     mon = max(usd)
