@@ -6,6 +6,7 @@ import time
 import logging
 import pymongo as mongo
 import redis
+import numpy as np
 
 #variables
 times = []
