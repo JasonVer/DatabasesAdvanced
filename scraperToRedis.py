@@ -66,10 +66,10 @@ results.append(calculatrix(times,usd,btcoin,hashes))
 #usd.append(maxUcd)
 
 #values into redis
-con.rpush("Hash", str(hashes_array.text))
-con.rpush("Time", str(times_array.text))
+con.rpush("Hash", str(hashes_array))
+con.rpush("Time", str(times_array))
 con.rpush("Bitcoin", str(btc_array))
-con.rpush("US Dollar", str(usd_array.text))
+con.rpush("US Dollar", str(usd_array))
 
 
 #mongoDB
