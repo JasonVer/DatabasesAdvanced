@@ -56,20 +56,20 @@ results.append(calculatrix(times,usd,btcoin,hashes))
 #get highest price
 
 #index = usd.index(maxUcd)
-maxHash = max(hashes_array)
-hashes.append(maxHash)
-maxTime = max(times_array)
-times.append(maxTime)
-maxBts = max(btc_array)
-btcoin.append(maxBts)
-maxUcd = max(usd_array)
-usd.append(maxUcd)
+#maxHash = max(hashes_array)
+#hashes.append(maxHash)
+#maxTime = max(times_array)
+#times.append(maxTime)
+#maxBts = max(btc_array)
+#btcoin.append(maxBts)
+#maxUcd = max(usd_array)
+#usd.append(maxUcd)
 
 #values into redis
-con.rpush("Hash", str(hashes))
-con.rpush("Time", str(times))
-con.rpush("Bitcoin", str(btcoin))
-con.rpush("US Dollar", str(usd))
+con.rpush("Hash", str(hashes_array.text))
+con.rpush("Time", str(times_array.text))
+con.rpush("Bitcoin", str(btc_array))
+con.rpush("US Dollar", str(usd_array.text))
 
 
 #mongoDB
@@ -85,4 +85,3 @@ while True:
     time.sleep(60)
     #function
     calculatrix(times,usd,btcoin,hashes)
-    
