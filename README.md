@@ -58,3 +58,9 @@ If you did that you can now work with MongoP.py.
 to install Redis you can follow redis.sh. if you did that, Redis is ready to go.
 To put Redis into your script you have to install the feature.
 This can you do with: Pip install redis.
+
+<h1> part 4</h1>
+in this part we pulled redis and mongo from dockerhub. You can find the both commands in dockerhub.
+
+<h1> part 5</h1>
+In the final part we putted the scripts in a container. you can get the container I made on this site: https://hub.docker.com/repository/docker/jasonver/databases-advanced-r0781387
