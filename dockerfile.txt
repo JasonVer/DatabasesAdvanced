@@ -1,0 +1,32 @@
+FROM ubuntu:latest
+
+COPY scraperToRedis.py scraperToRedis.py
+COPY redis.sh redis.sh
+COPY mongo.sh mongo.sh
+COPY redToMongo.py redToMongo.py
+
+
+
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y sudo
+RUN apt-get install -y python3-pip
+RUN apt-get install -y python3
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+
+
+RUN pip3 install Pandas
+RUN pip3 install Requests
+RUN pip3 install bs4
+RUN pip3 install pymongo
+RUN pip3 install redis
+
+RUN chmod +x redis.sh
+RUN chmod +x mongo.sh
+RUN bash redis.sh
+RUN bash mongo.sh
+
+RUN python3 scraperToRedis.py && python3 redToMongo.py
+
+CMD ["scraperToRedis.py","redToMongo.py"]
+#ENTRYPOINT ["python3"]
